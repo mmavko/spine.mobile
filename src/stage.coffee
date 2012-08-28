@@ -14,8 +14,6 @@ class Stage extends Spine.Controller
   effectOptions: (options = {})  ->
     $.extend({}, @effectDefaults, options)
 
-  viewport: true
-  
   constructor: ->
     super
     @el.addClass('stage')
@@ -23,8 +21,6 @@ class Stage extends Spine.Controller
     @header  = $('<header />')
     @content = $('<article />')
     @footer  = $('<footer />')
-    
-    @content.addClass('viewport') if @viewport
     
     @el.append(@header, @content, @footer)
     globalManager.add(@) if @global

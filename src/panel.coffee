@@ -4,7 +4,6 @@ Stage = require('./stage')
 
 class Panel extends Stage
   title: false
-  viewport: false
 
   constructor: ->
     super
@@ -43,25 +42,21 @@ class Panel extends Stage
   effects:
     left: ->
       @el.addClass('active')
-      @content.gfxSlideIn(@effectOptions(direction: 'left'))
-      @header.gfxSlideIn(@effectOptions(direction: 'left', fade: true, distance: 50))
+      @el.gfxSlideIn(@effectOptions(direction: 'left'))
     
     right: ->
       @el.addClass('active')
-      @content.gfxSlideIn(@effectOptions(direction: 'right'))
-      @header.gfxSlideIn(@effectOptions(direction: 'right', fade: true, distance: 50))
+      @el.gfxSlideIn(@effectOptions(direction: 'right'))
   
   reverseEffects:
     left: ->
-      @content.gfxSlideOut(@effectOptions(direction: 'right'))
-      @header.gfxSlideOut(@effectOptions(direction: 'right', fade: true, distance: 50))
-      @content.queueNext => 
+      @el.gfxSlideOut(@effectOptions(direction: 'right'))
+      @el.queueNext => 
         @el.removeClass('active')
     
     right: ->
-      @content.gfxSlideOut(@effectOptions(direction: 'left'))
-      @header.gfxSlideOut(@effectOptions(direction: 'left', fade: true, distance: 50))
-      @content.queueNext => 
+      @el.gfxSlideOut(@effectOptions(direction: 'left'))
+      @el.queueNext => 
         @el.removeClass('active')
         
 (module?.exports = Panel) or @Panel = Panel
