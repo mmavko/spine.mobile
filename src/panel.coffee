@@ -28,7 +28,7 @@ class Panel extends Stage
     if effect
       @effects[effect].apply(this)
     else
-      @content.add(@header).show()
+      @el.show()
       @el.addClass('active')
 
   deactivate: (params = {}) ->
